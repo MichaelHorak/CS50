@@ -1,0 +1,60 @@
+1. find out how to return all the important information:
+song_title
+artist
+album
+release_date
+country
+
+
+
+Input genre/decade
+Gather data
+create a class for songs
+add songs only with that genre
+
+1. what all the questions need + test all of them
+2. how to get correct answers
+3. system for keeping the questions random + not repeating
+4. system for keeping unique data for all questions
+
+Generate random! question + number of the question
+input
+update score
+Generate next question...
+After 10 questions return score
+
+Question ideas?
+1. Who is the artist of the song '[Song Title]' in the album '[Album Name]
+2. Which album features the song '[Song Title]' by [Artist Name]
+3. Who is the artist of the album '[Album Name]'?"
+4. In which year was the album '[Album Name]' by [Artist Name] released?
+5. "In which year was the song '[Song Title]' by [Artist Name] released?"
+6. Which song is by this artist:
+7. is not
+8. "Which was released first: the album '[Album Name]' by [Artist Name] or the album '[Another Album]' by [Another Artist]?
+9. multiple songs from the same year, guess the year
+10. which album is not by the following artist
+    Which of the following albums is not part of [Artist Name]'s discography?"
+
+Release Date Comparison:
+
+Which song starts with the following lyrics??
+# 7. From which country // search shows everything as USA
+
+Retrieve data from the iTunes API.
+Save the data to database.
+Create a MusicQuiz instance to manage the quiz.
+Choose a question type and get a unique question.
+Display the question and options to the user.
+Get the user's answer and check it.
+Repeat steps 4-6 for the desired number of questions.
+At the end of the quiz, get and display the user's score.
+
+Data to save:
+artistId
+collectionId
+trackId
+artistName
+collectionName
+trackName
+releaseDate

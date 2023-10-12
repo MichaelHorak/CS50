@@ -1,0 +1,53 @@
+/usr/local/bin/python3 /Users/dillinger/PycharmProjects/pythonProject/CS50P/Final project/t_fp_3.py
+Welcome to Michael's Music Quiz!
+Test your knowledge about your favourite genre.
+Please select a genre from the following options:
+1 Rock
+2 Pop
+3 Hip-Hop/Rap
+4 Country
+5 Nu Metal
+6 Arabic Pop
+7 Jazz
+Enter the number of your chosen genre: 1
+You selected Rock.
+[(136975, 1474815798, 1474815898, 'The Beatles', 'Abbey Road (2019 Mix)', 'Here Comes the Sun', '1969')]
+[(136975, 1441164359, 1441164829, 'The Beatles', 'Rubber Soul', 'In My Life', '1965')]
+[(136975, 1441164495, 1441164738, 'The Beatles', 'Let It Be', 'Let It Be', '1970')]
+[(136975, 1441164426, 1441164589, 'The Beatles', 'Abbey Road (Remastered)', 'Here Comes the Sun', '1969')]
+[(136975, 401151866, 401151893, 'The Beatles', 'Let It Be', 'Across the Universe', '1969')]
+[(136975, 1441133180, 1441133834, 'The Beatles', 'The Beatles (The White Album)', 'Blackbird', '1968')]
+[(136975, 1441133100, 1441133277, 'The Beatles', 'The Beatles 1967-1970 (The Blue Album)', 'Hey Jude', '1968')]
+[(136975, 1441133180, 1441134086, 'The Beatles', 'The Beatles (The White Album)', 'Birthday', '1968')]
+[(994656, 580708175, 580708180, 'Led Zeppelin', 'Led Zeppelin IV (Remastered)', 'Stairway to Heaven', '1971')]
+[(994656, 580708279, 580708280, 'Led Zeppelin', 'Led Zeppelin III (Remastered)', 'Immigrant Song', '1970')]
+[(994656, 580708175, 580708183, 'Led Zeppelin', 'Led Zeppelin IV (Remastered)', 'Going to California', '1971')]
+[(994656, 580707980, 580708059, 'Led Zeppelin', 'Physical Graffiti (Remastered)', 'Kashmir', '1975')]
+[(994656, 580708175, 580708177, 'Led Zeppelin', 'Led Zeppelin IV (Remastered)', 'Black Dog', '1971')]
+[(994656, 580707622, 580707625, 'Led Zeppelin', 'In Through the Out Door (Remastered)', 'Fool In the Rain', '1979')]
+[(994656, 580707916, 580707919, 'Led Zeppelin', 'Houses of the Holy (Remastered)', 'Over the Hills and Far Away', '1973')]
+[(994656, 580708374, 580708471, 'Led Zeppelin', 'Led Zeppelin II (Remastered)', 'Whole Lotta Love', '1969')]
+[(3296287, 1440650428, 1440650711, 'Queen', 'Greatest Hits I, II & III: The Platinum Collection', 'Bohemian Rhapsody', '1974')]
+[(3296287, 1440650428, 1440651216, 'Queen', 'Greatest Hits I, II & III: The Platinum Collection', 'We Will Rock You', '1977')]
+[(3296287, 1440650428, 1440650733, 'Queen', 'Greatest Hits I, II & III: The Platinum Collection', "Don't Stop Me Now", '1974')]
+[(3296287, 697650603, 697651445, 'David Bowie & Queen', 'Best of Bowie', 'Under Pressure', '1981')]
+[(3296287, 1440650428, 1440650719, 'Queen', 'Greatest Hits I, II & III: The Platinum Collection', 'Another One Bites the Dust', '1980')]
+[(3296287, 1440650428, 1440651281, 'Queen', 'Greatest Hits I, II & III: The Platinum Collection', 'We Are the Champions', '1977')]
+[(3296287, 1440650428, 1440651291, 'Queen & David Bowie', 'Greatest Hits I, II & III: The Platinum Collection', 'Under Pressure', '1981')]
+[(3296287, 1440650428, 1440651012, 'Queen', 'Greatest Hits I, II & III: The Platinum Collection', 'Somebody to Love', '1976')]
+[(1249595, 1440764786, 1440765582, 'The Rolling Stones', 'Hot Rocks 1964-1971', 'Paint It Black', '1966')]
+[(1249595, 1440764786, 1440765093, 'The Rolling Stones', 'Hot Rocks 1964-1971', "(I Can't Get No) Satisfaction", '1965')]
+[(1249595, 1440816775, 1440817036, 'The Rolling Stones', 'Some Girls (Remastered 2011)', 'Beast Of Burden', '1978')]
+[(1249595, 1440764786, 1440765871, 'The Rolling Stones', 'Hot Rocks 1964-1971', 'Honky Tonk Women', '1964')]
+[(1249595, 1440764786, 1440765880, 'The Rolling Stones', 'Hot Rocks 1964-1971', 'Gimme Shelter', '1966')]
+Traceback (most recent call last):
+  File "/Users/dillinger/PycharmProjects/pythonProject/CS50P/Final project/t_fp_3.py", line 89, in <module>
+    main()
+  File "/Users/dillinger/PycharmProjects/pythonProject/CS50P/Final project/t_fp_3.py", line 16, in main
+    generate_data(artist_ids)
+  File "/Users/dillinger/PycharmProjects/pythonProject/CS50P/Final project/t_fp_3.py", line 62, in generate_data
+    date = result["releaseDate"]
+           ~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'releaseDate'
+
+Process finished with exit code 1
