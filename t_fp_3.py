@@ -40,7 +40,15 @@ def main():
     # print(f"Your score is {score}.\n")
     # eighth question
     # score = generate_eighth_question(score)
-    score = generate_eighth_question(user_score)
+    # score = generate_eighth_question(user_score)
+    # print(f"Your score is {score}.\n")
+    # # ninth question
+    # score = generate_ninth_question(score)
+    # score = generate_ninth_question(user_score)
+    # print(f"Your score is {score}.\n")
+    # tenth question
+    # score = generate_tenth_question(score)
+    score = generate_tenth_question(user_score)
     print(f"Your score is {score}.\n")
     # closing db & deleting the table with data
     delete_db_table()
@@ -419,9 +427,118 @@ def generate_eighth_question(user_score):
     return user_score
 
 
-# 9. multiple songs from the same year, guess the year
-# 10. which album is not by the following artist
-#     Which of the following albums is not part of [Artist Name]'s discography?"
+def generate_ninth_question(user_score):
+    # save the year as the correct question
+    # get data from database
+    artistId, collectionId, trackId, artistName, collectionName, trackName, releaseDate = select_data_for_question()
+    # save correct answer
+    correct_answer = releaseDate
+    answer_pool = [correct_answer]
+    # generate three songs from the same year by different author, probably need artist_pool & song pool
+    song_pool = [trackName]
+    artist_pool = [artistName]
+    # now I need another two songs by the same artistName
+    while len(song_pool) < 3:
+        # open database
+        con = sqlite3.connect("music.db")
+        cur = con.cursor()
+        cur.execute('SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1')
+        # res = cur.execute("SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1")
+        results = cur.fetchall()
+        con.commit()
+        # print(results)
+        con.close()
+        # format result data
+        for result in results:
+            key_data = list(result)
+        artistId2, collectionId2, trackId2, artistName2, collectionName2, trackName2, releaseDate2 = key_data
+        # making sure the result is by a different author but from the same year
+        if releaseDate2 == releaseDate:
+            if artistName2 not in artist_pool:
+                artist_pool.append(artistName2)
+                song_pool.append(trackName2)
+    # results for answer_pool
+    while len(answer_pool) < 4:
+        # open database
+        con = sqlite3.connect("music.db")
+        cur = con.cursor()
+        cur.execute('SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1')
+        # res = cur.execute("SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1")
+        results = cur.fetchall()
+        con.commit()
+        # print(results)
+        con.close()
+        # format result data
+        for result in results:
+            key_data = list(result)
+        artistId2, collectionId2, trackId2, artistName2, collectionName2, trackName2, releaseDate2 = key_data
+        # making sure the result is by a different author but from the same year
+        if releaseDate2 not in answer_pool:
+            answer_pool.append(releaseDate2)
+    # answer_pool needs a shuffle
+    random.shuffle(answer_pool)
+    # print correct answer for testing
+    print(correct_answer)
+    # print question
+    # 9. multiple songs from the same year, guess the year
+    print(f"The songs {song_pool[0]}, {song_pool[1]}, and {song_pool[2]} are from year:")
+    # generate answers
+    user_score = answers_and_outcome(answer_pool, correct_answer, user_score)
+    return user_score
+
+
+def generate_tenth_question(user_score):
+    # get data from database
+    artistId, collectionId, trackId, artistName, collectionName, trackName, releaseDate = select_data_for_question()
+    # save correct answer
+    wrong_answer = collectionName
+    answer_pool = [wrong_answer]
+    # now I need another two albums by the same artistName
+    while len(answer_pool) < 3:
+        # open database
+        con = sqlite3.connect("music.db")
+        cur = con.cursor()
+        cur.execute('SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1')
+        # res = cur.execute("SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1")
+        results = cur.fetchall()
+        con.commit()
+        # print(results)
+        con.close()
+        # format result data
+        for result in results:
+            key_data = list(result)
+        artistId2, collectionId2, trackId2, artistName2, collectionName2, trackName2, releaseDate2 = key_data
+        if artistName2 == artistName:
+            if collectionName2 not in answer_pool:
+                answer_pool.append(collectionName2)
+    # and one album by another artistName2
+    # open database
+    con = sqlite3.connect("music.db")
+    cur = con.cursor()
+    cur.execute('SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1')
+    # res = cur.execute("SELECT * FROM songdata ORDER BY RANDOM() LIMIT 1")
+    results = cur.fetchall()
+    con.commit()
+    # print(results)
+    con.close()
+    # format result data
+    for result in results:
+        key_data = list(result)
+    artistId2, collectionId2, trackId2, artistName2, collectionName2, trackName2, releaseDate2 = key_data
+    if artistName2 != artistName:
+        answer_pool.append(collectionName2)
+    correct_answer = collectionName2
+    # shuffle answers
+    random.shuffle(answer_pool)
+    # print correct answer for testing
+    print(correct_answer)
+    # print question
+    # 10. which album is not by the following artist
+    #     Which of the following albums is not part of [Artist Name]'s discography?"
+    print(f"Which of the following albums is NOT part of {artistName}'s discography?")
+    # generate answers
+    user_score = answers_and_outcome(answer_pool, correct_answer, user_score)
+    return user_score
 
 
 def select_data_for_question():
